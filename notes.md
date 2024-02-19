@@ -11,3 +11,6 @@ npm install --save bootstrap@3
 <!-- shorthand  -->
 ng generate component servers
 ng g c servers 
+
+<!-- use $event -->
+<input type="text" class="form-control" (input)="onUpdateServerName($event)">
