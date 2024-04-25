@@ -17,6 +17,9 @@ export class ServersComponent {
   serverCreated = false;
   servers = ['TestServer', 'TestServer2'];
 
+  showSecret = false;
+  clicks = []
+
   constructor() {
     setTimeout(() => {
       this.allowNewServer = true
@@ -36,6 +39,13 @@ export class ServersComponent {
   onUpdateServerName(event: any) {
     console.log(event);
     this.serverName = (<HTMLInputElement>event.target).value;
+  }
+
+  // Assignment
+
+  toggleShow() {
+    this.showSecret = !this.showSecret
+    this.clicks.push(this.clicks.length)
   }
 
 }

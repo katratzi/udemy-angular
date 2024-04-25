@@ -16,3 +16,11 @@
     <p>No server was create</p>
 </ng-template>
 <app-server *ngFor="let server of servers"></app-server>
+
+<!-- Assignment -->
+
+<button class='btn btn-primary' (click)="toggleShow()">Display Details</button>
+<p [hidden]="!showSecret">Secret Password = "sasquatch" {{ showSecret }}</p>
+<ul>
+    <li *ngFor="let number of clicks" [ngClass]="{fifthElement: number >= 4}">{{number}}</li>
+</ul>
