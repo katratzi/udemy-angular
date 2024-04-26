@@ -37,3 +37,7 @@ ng g c servers
 <ul> // clicks is an array here
     <li *ngFor="let number of clicks" [ngClass]="{fifthElement: number >= 4}">{{number}}</li>
 </ul>
+
+<!-- image src with a url -->
+src="{{recipe.imagePath}}" 
+[src]="recipe.imagePath"
