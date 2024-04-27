@@ -119,3 +119,12 @@ So this wouldn't work in the parent
         <ng-content></ng-content> // put it here please
     </div>
 </div>
+
+<!-- ContentChild -->
+// if we're passing elements down with ng-content and we
+// want to access them use...
+ 
+<p #contentParagraph> in parent html
+
+and in child ts
+ @ContentChild('contentParagraph', { static: true }) paragraph: ElementRef  
