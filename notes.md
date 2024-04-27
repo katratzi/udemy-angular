@@ -41,3 +41,14 @@ ng g c servers
 <!-- image src with a url -->
 src="{{recipe.imagePath}}" 
 [src]="recipe.imagePath"
+
+<!-- to make a custon bindable property use @Input -->
+//So in the child class, define the object
+export class ServerElementComponent {
+  @Input() element: {
+    type: string, name: string, content: string,
+  };
+}
+
+// and in the parent html
+<app-server-element *ngFor="let serverElement of serverElements" [element]="serverElement"></app-server-element>
