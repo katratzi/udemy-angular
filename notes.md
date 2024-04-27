@@ -96,3 +96,26 @@ onServerAdded(serverData: { serverName: string, serverContent: string }) {
   onAddServer(nameInput) {
     console.log(nameInput.value);
   }
+
+<!-- ViewChild -->
+// get access to the element in the template we're in from...
+@ViewChild('serverContentInput', { static: true }) serverContentInput: ElementRef
+// use with nativeElement
+serverContent: this.serverContentInput.nativeElement.value
+
+<!-- ng-content -->
+All content between our custom tags is removed by default. 
+So this wouldn't work in the parent
+<app-server-element *ngFor="let serverElement of serverElements" [element]="serverElement">
+    <p>
+        <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+        <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+    </p>
+</app-server-element>
+// if we add ng-content in though, it tells it where to place this in the child
+<div class="panel panel-default">
+    <div class="panel-heading">{{ element.name }}</div>
+    <div class="panel-body">
+        <ng-content></ng-content> // put it here please
+    </div>
+</div>
