@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
   templateUrl: './cockpit.component.html',
-  styleUrl: './cockpit.component.css'
+  styleUrl: './cockpit.component.css',
+  encapsulation: ViewEncapsulation.None, // apply styles globally with this
 })
 export class CockpitComponent {
 
@@ -13,7 +14,11 @@ export class CockpitComponent {
   newServerName = '';
   newServerContent = '';
 
-  onAddServer() {
+  onAddServer(nameInput) {
+    // we pass the html element, in this case input
+    // so we can look at the value of it
+    console.log(nameInput.value);
+
     this.serverCreated.emit({
       serverName: this.newServerName,
       serverContent: this.newServerContent
