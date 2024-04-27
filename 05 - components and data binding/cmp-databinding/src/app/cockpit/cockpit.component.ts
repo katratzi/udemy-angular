@@ -14,10 +14,10 @@ export class CockpitComponent {
   newServerName = '';
   newServerContent = '';
 
-  onAddServer(nameInput) {
+  onAddServer() {
     // we pass the html element, in this case input
     // so we can look at the value of it
-    console.log(nameInput.value);
+    // console.log(nameInput.value);
 
     this.serverCreated.emit({
       serverName: this.newServerName,
