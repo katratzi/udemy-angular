@@ -87,3 +87,12 @@ onServerAdded(serverData: { serverName: string, serverContent: string }) {
       content: serverData.serverContent
     });
   }
+
+
+  <!-- Local references in templates -->
+  // instead of using the ngModel, can use a local reference
+  <input type="text" class="form-control" #serverNameInput>
+  // this passes the html element, so for the value we'd use
+  onAddServer(nameInput) {
+    console.log(nameInput.value);
+  }
