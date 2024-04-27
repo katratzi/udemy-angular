@@ -42,13 +42,48 @@ ng g c servers
 src="{{recipe.imagePath}}" 
 [src]="recipe.imagePath"
 
-<!-- to make a custon bindable property use @Input -->
+
+<!-- @Input - to make a custon bindable property -->
 //So in the child class, define the object
 export class ServerElementComponent {
   @Input() element: {
     type: string, name: string, content: string,
   };
 }
+// alias or external name
+@Input('srvElement')
 
 // and in the parent html
 <app-server-element *ngFor="let serverElement of serverElements" [element]="serverElement"></app-server-element>
+
+
+<!-- @Output - create our own custom bindable event -->
+
+// in the child component create the event and output it
+export class CockpitComponent {
+
+  @Output() serverCreated = new EventEmitter<{ serverName: string, serverContent: string }>();
+
+  newServerName = '';
+  newServerContent = '';
+
+  onAddServer() {
+    this.serverCreated.emit({
+      serverName: this.newServerName,
+      serverContent: this.newServerContent
+    })
+
+  }
+}
+
+// listen from the parent like so
+<app-cockpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)">
+
+// and handle in parent like so
+onServerAdded(serverData: { serverName: string, serverContent: string }) {
+    this.serverElements.push({
+      type: 'server',
+      name: serverData.serverName,
+      content: serverData.serverContent
+    });
+  }
