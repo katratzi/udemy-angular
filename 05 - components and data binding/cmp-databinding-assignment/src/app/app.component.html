@@ -15,12 +15,13 @@
         <li>Style the element (e.g. paragraph) holding your output text differently in both components</li>
       </ol>
     </div>
-    <app-game-control></app-game-control>
+    <app-game-control (counterChanged)="onCounterChanged($event)"></app-game-control>
     <div class="col-xs-6">
-      <app-even></app-even>
+      <app-even *ngFor="let even of evens" [evenNumber]="even"></app-even>
     </div>
     <div class="col-xs-6">
-      <app-odd></app-odd>
+      <!-- <app-even *ngFor="let even of evens" [evenNumber]="even"></app-even> -->
+      <app-odd *ngFor="let odd of odds" [oddNumber]="odd"></app-odd>
     </div>
   </div>
 </div>

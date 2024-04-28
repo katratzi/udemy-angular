@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-game-control',
@@ -9,6 +9,8 @@ export class GameControlComponent {
 
   counter: number = 0
   intervalId = null
+
+  @Output() counterChanged = new EventEmitter<{ counter: number }>();
 
   startGame() {
     console.log("start");
@@ -24,9 +26,9 @@ export class GameControlComponent {
 
   incrementCounter() {
     console.log(this.counter);
-
     this.counter += 1
-    // console.log(this.counter);
+    // emit the counter
+    this.counterChanged.emit({ counter: this.counter })
 
   }
 }
