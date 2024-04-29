@@ -10,9 +10,4 @@ export class RecipesComponent {
 
   selectedRecipe: Recipe;
 
-  doSomething(hello: Recipe) {
-    console.log("asdasd");
-
-  }
-
 }
