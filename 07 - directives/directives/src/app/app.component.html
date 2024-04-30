@@ -22,12 +22,15 @@
           </li>
         </div>
       </ul>
+      <!-- the *ngIf is basically transformed into this -->
       <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
       </ng-template>
 
       <p appBasicHighlight>Style me with basic directive</p>
-      <p appBetterHighlight>Style me with better directive</p>
+      <p [appBetterHighlight]="'red'" [defaultColor]="'yellow'">Style me with better directive</p>
+      <!-- can use a shortcut if property is a string, omit [] and '' -->
+      <p [appBetterHighlight]="'red'" defaultColor="yellow">Style me with better directive</p>
     </div>
   </div>
 </div>
