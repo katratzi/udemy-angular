@@ -147,3 +147,16 @@ export class BasicHighlightDirective implements OnInit {
 
 // use simply with
 <p appBasicHighlight>Style me with basic directive</p>
+
+<!-- host listener - use any events even your own -->
+// add in directive
+@HostListener('mouseenter') mouseover(eventData: Event) {
+    this.renderder.setStyle(this.eleRef.nativeElement, 'background-color', 'blue')
+  }
+
+  <!-- Host binding - access any property in directive -->
+  @HostBinding('style.backgroundColor') backgroundColor: string = 'transparent'
+  // then simply...
+  @HostListener('mouseenter') mouseover(eventData: Event) {
+    this.backgroundColor = 'blue'
+  }
