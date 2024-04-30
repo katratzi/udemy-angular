@@ -128,3 +128,22 @@ So this wouldn't work in the parent
 
 and in child ts
  @ContentChild('contentParagraph', { static: true }) paragraph: ElementRef  
+
+
+
+ <!-- custom directive -->
+@Directive({
+    selector: '[appBasicHighlight]'
+})
+export class BasicHighlightDirective implements OnInit {
+    // use the private shortcut which automatically
+    // gives us a property
+    constructor(private elementRef: ElementRef) {}
+
+    ngOnInit(): void {
+        this.elementRef.nativeElement.style.backgroundColor = 'green'
+    }
+}
+
+// use simply with
+<p appBasicHighlight>Style me with basic directive</p>
