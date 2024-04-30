@@ -6,6 +6,7 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 export class UnlessDirective {
 
   // setter of the property
+  // this name needs to be the same as the selector
   @Input() set appUnless(condition: boolean) {
     if (!condition) {
       // show the given template
