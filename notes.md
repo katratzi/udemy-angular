@@ -160,3 +160,11 @@ export class BasicHighlightDirective implements OnInit {
   @HostListener('mouseenter') mouseover(eventData: Event) {
     this.backgroundColor = 'blue'
   }
+
+<!-- Services -->
+// all we need to create a service
+export class LoggingService {
+    logStatusChange(status: string) {
+        console.log('A server status changed, new status: ' + status);
+    }
+}
