@@ -168,3 +168,19 @@ export class LoggingService {
         console.log('A server status changed, new status: ' + status);
     }
 }
+// use by importing..
+import { LoggingService } from '../logging.service';
+
+@Component({
+  ...
+  providers: [LoggingService] // add provider
+})
+export class AccountComponent {
+  ...
+  // use a constructor, and now you can use it!
+  constructor(private logginService: LoggingService) { }
+
+  // alternative can use...
+  constructor() {
+    this.loggingService = inject(LoggingService);
+  }
