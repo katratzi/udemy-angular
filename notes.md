@@ -184,3 +184,9 @@ export class AccountComponent {
   constructor() {
     this.loggingService = inject(LoggingService);
   }
+
+  <!-- Hierarchy Services -->
+  When we create a service, it can pass down that instance to it's children in the hierarchy, but they can overwritten can the children can create their own.  To avoid, use the same syntax but OMIT the class in the providers array of the children. E.g.
+  providers: [LoggingService, AccountsService] -> providers: [LoggingService]
+
+  
